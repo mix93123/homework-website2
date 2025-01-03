@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samutprakan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
@@ -11,7 +13,7 @@
         <div class="logo">
             <img src="/images/7.png" alt="Samutprakan Logo">
             <span>สมุทรปราการ</span>
-        </div>        
+        </div>
         <label for="menu-toggle" class="menu-icon">&#9776;</label>
         <input type="checkbox" id="menu-toggle" class="menu-toggle" style="display: none;">
         <nav>
@@ -30,62 +32,51 @@
         <section>
             <h1>ติดต่อเรา</h1>
             <h2>ส่งข้อความถึงเรา</h2>
-            <article class="from-contact">
-                <form action="/submit" method="POST" role="form" aria-label="แบบฟอร์มติดต่อ">
-                    <div class="form-group">
-                        <label for="fullname">ชื่อ-นามสกุล *</label>
-                        <input
-                        type="text"
-                        id="fullname"
-                        name="fullname"
-                        required
-                        aria-required="true"
-                        minlength="2"
-                        maxlength="100"
-                        aria-describedby="fullname-help">
-                        <small id="fullname-help">กรุณากรอกชื่อและนามสกุลจริง</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">อีเมล *</label>
-                        <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        aria-required="true"
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                        aria-describedby="email-help">
-                        <small id="email-help">ตัวอย่าง: example@gmail.com</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="tel">เบอร์โทรศัพท์ *</label>
-                        <input
-                        type="tel"
-                        id="tel"
-                        name="tel"
-                        pattern="[0-9]{10}"
-                        aria-describedby="tel-help">
-                        <small id="tel-help">กรอกหมายเลข 10 หลัก ไม่ต้องมีขีด เช่น 0888888888</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">ข้อความ *</label>
-                        <textarea
-                        id="message"
-                        name="message"
-                        required
-                        aria-required="true"
-                        minlength="10"
-                        rows="5"
-                        aria-describedby="message-help"></textarea>
-                        <small id="message-help">กรุณากรอกข้อความอย่างน้อย 10 ตัวอักษร</small>
-                    </div>
-                    <button type="submit">ส่งข้อความ</button>
-                    </form>
-            </article>
+            <!-- ปุ่มเปิด Modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal">
+                กรอกแบบฟอร์มติดต่อ
+            </button>
         </section>
     </main>
-        <footer>
-            <p>© 2024 สมุทรปราการ By Panu</p>
-        </footer>
+    <footer>
+        <p>© 2024 สมุทรปราการ By Panu</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">ติดต่อเรา</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/submit" method="POST" role="form" aria-label="แบบฟอร์มติดต่อ">
+                        <div class="mb-3">
+                            <label for="fullname" class="form-label">ชื่อ-นามสกุล *</label>
+                            <input type="text" id="fullname" name="fullname" class="form-control" required minlength="2" maxlength="100" aria-describedby="fullname-help">
+                            <div id="fullname-help" class="form-text">กรุณากรอกชื่อและนามสกุลจริง</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">อีเมล *</label>
+                            <input type="email" id="email" name="email" class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" aria-describedby="email-help">
+                            <div id="email-help" class="form-text">ตัวอย่าง: example@gmail.com</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tel" class="form-label">เบอร์โทรศัพท์ *</label>
+                            <input type="tel" id="tel" name="tel" class="form-control" pattern="[0-9]{10}" aria-describedby="tel-help">
+                            <div id="tel-help" class="form-text">กรอกหมายเลข 10 หลัก ไม่ต้องมีขีด เช่น 0888888888</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">ข้อความ *</label>
+                            <textarea id="message" name="message" class="form-control" required minlength="10" rows="5" aria-describedby="message-help"></textarea>
+                            <div id="message-help" class="form-text">กรุณากรอกข้อความอย่างน้อย 10 ตัวอักษร</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">ส่งข้อความ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
